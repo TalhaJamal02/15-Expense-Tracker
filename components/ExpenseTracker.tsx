@@ -163,24 +163,37 @@ function ExpenseTracker() {
     <div>
       <div className="flex flex-col h-screen">
         <header className="bg-primary text-primary-foreground py-4 px-6 shadow">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-wrap justify-between items-center gap-4">
             <h1 className="text-2xl font-bold">Expense Tracker</h1>
             <div className="text-2xl font-bold">Total: ${totalExpenses.toFixed(2)}</div>
           </div>
         </header>
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6">
           <ul className="space-y-4">
             {expenses.map((expense) => (
-              <li key={expense.id} className="bg-card p-4 rounded-lg shadow-lg flex justify-between items-center">
-                <div>
+              <li
+                key={expense.id}
+                className="bg-card p-4 rounded-lg shadow-lg flex flex-wrap sm:flex-nowrap justify-between items-center gap-4"
+              >
+                <div className="w-full sm:w-auto">
                   <h3 className="text-lg font-medium">{expense.name}</h3>
-                  <p className="text-muted-foreground">${expense.amount.toFixed(2)} - {format(expense.date, "dd/MM/yyyy")}</p>
+                  <p className="text-muted-foreground">
+                    ${expense.amount.toFixed(2)} - {format(expense.date, "dd/MM/yyyy")}
+                  </p>
                 </div>
                 <div className="flex gap-2">
-                  <Button variant="ghost" size="icon" onClick={() => handleEditExpense(expense.id)}>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => handleEditExpense(expense.id)}
+                  >
                     <FilePenIcon className="w-6 h-6" />
                   </Button>
-                  <Button variant="ghost" size="icon" onClick={() => handleDeleteExpense(expense.id)}>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => handleDeleteExpense(expense.id)}
+                  >
                     <TrashIcon className="w-6 h-6" />
                   </Button>
                 </div>
@@ -189,7 +202,15 @@ function ExpenseTracker() {
           </ul>
         </main>
         <div className="fixed bottom-6 right-6">
-          <Button size="icon" className="rounded-full shadow-lg" onClick={() => { setShowModal(true); setIsEditing(false); resetForm(); }}>
+          <Button
+            size="icon"
+            className="rounded-full shadow-lg"
+            onClick={() => {
+              setShowModal(true);
+              setIsEditing(false);
+              resetForm();
+            }}
+          >
             <PlusIcon className="w-6 h-6" />
           </Button>
         </div>
@@ -216,7 +237,9 @@ function ExpenseTracker() {
             </div>
             <DialogFooter>
               <Button variant="outline" onClick={() => setShowModal(false)}>Cancel</Button>
-              <Button onClick={isEditing ? handleSaveEditExpense : handleAddExpense}>{isEditing ? "Save Changes" : "Add Expense"}</Button>
+              <Button onClick={isEditing ? handleSaveEditExpense : handleAddExpense}>
+                {isEditing ? "Save Changes" : "Add Expense"}
+              </Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
