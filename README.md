@@ -17,3 +17,9 @@ This project is a React-based Expense Tracker that helps users manage their fina
 - Tailwind CSS: Utility-first CSS framework for custom styling.
 - ShadCN UI: Pre-styled components for a modern look.
 - Date-fns: For formatting and manipulating dates
+
+## 🎯 Future Improvements
+- Add expense categories for better organization.
+- Include charts/graphs for visual expense analysis.
+- Add user authentication for personalized expense tracking.
+- Integrate a backend for cloud-based storage and multi-device sync.
